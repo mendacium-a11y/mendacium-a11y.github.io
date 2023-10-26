@@ -125,7 +125,7 @@ img{
 
 @media(max-width: 900px){
     .intro>p{
-        font-size:medium;
+        font-size:small;
     }
 }
 
