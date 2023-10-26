@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Docu ment</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="first">
+            <div class="intro">
+                <h1>
+                    <a href="/" class="typewrite" data-period="2000" data-type='[ "Saksham Saha", "Web Developer" ]'>
+                        <span class="wrap"></span>
+                    </a>
+                </h1>
+
+                <p> I'm a versatile and dedicated full-stack web developer with a deep passion for transforming ideas
+                    into well-crafted websites. Whether you're a business owner looking to establish a strong online
+                    presence or an individual with a unique project in mind, I'm here to turn your vision into reality.
+                    My expertise lies in creating user-friendly digital experiences using a diverse stack that includes
+                    React.js, Next.js, Express.js, Python, JavaScript, Flask, and databases like PostgreSQL and SQLite.
+                    With a commitment to making the web a better place for everyone, I'm excited to work together on
+                    your next project and bring it to life.</p>
+
+            </div>
+            <div class="social">
+                <a href="#"><img src="./pics/github-142-svgrepo-com.svg" alt=""></a>
+                <a href="#"><img src="./pics/linkedin-svgrepo-com.svg" alt=""></a>
+            </div>
+            <div class="bottom">
+                <a href="#"><img class="up-down" src="./pics/chevron-down-double-svgrepo-com.svg" alt=""></a>
+            </div>
+        </div>
+        <div class="second">
+            <h1 >Portfolio</h1>
+
+            <div class="card-container">
+                <div>
+                    <img src="./pics/1.png" alt="Image 1">
+                </div>
+                <div>
+                    <img src="./pics/2.png" alt="Image 2">
+                </div>
+                <div>
+                    <img src="./pics/3.png" alt="Image 3">
+                </div>
+                <div>
+                    <img src="./pics/4.png" alt="Image 4">
+                </div>
+                <div>
+                    <img src="./pics/5.png" alt="Image 5">
+                </div>
+                <div>
+                    <img src="./pics/1.png" alt="Image 6">
+                </div>
+                <!-- <div>
+                    <img src="./pics/1.png" alt="Image 6">
+                </div>
+                <div>
+                    <img src="./pics/1.png" alt="Image 6">
+                </div>
+                <div>
+                    <img src="./pics/1.png" alt="Image 6">
+                </div> -->
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var TxtType = function (el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function () {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function () {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function () {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+        };
+    </script>
+
+</body>
+
+</html>
