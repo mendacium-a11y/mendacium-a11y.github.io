@@ -1,18 +1,17 @@
 .container {
-    height: 80vh;
+    height: 100vh;
     overflow-y: scroll; /* Enable vertical scrolling */
     scroll-snap-type: y mandatory; /* Enable mandatory snap scrolling along the y-axis */
 }
 
 .first, .second {
-    height: 80vh;
-    width: 100vw;
+    
     scroll-snap-align: start; /* Snap at the start of each div */
 }
 
 .first {
     position: relative; 
-    height: 80vh;
+    height: 100vh;
     width: 100vw;
     background-color: rgb(15, 18, 36);
     display: flex;
@@ -24,7 +23,7 @@
 
 .intro {
     height: 50vh;
-    width: 30vw;
+    width: 35vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,6 +37,9 @@ body{
     background-color: #0f1224;
     font-family: 'Montserrat', sans-serif;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -46,7 +48,12 @@ body{
     bottom: 0; /* Stick it to the bottom of the parent div */
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 550px) {
+    
+    .first{
+        height: 90vh;
+        margin-bottom: 10vh;
+    }
     .intro {
         width: 60vw;
     }
@@ -101,6 +108,19 @@ a {
     text-align: center; /* Center align the content within the grid items */
 }
 
+@media(max-width:500px){
+    .card-container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        max-height: 60vh;
+        padding: 15px;
+    }
+    .second{
+        font-size: larger;
+    }
+}
+
 .card-container div {
     border: 0px solid #ffffff; /* Optional: Add a border to visually separate grid items */
     padding: 10px; /* Optional: Add padding to grid items for spacing */
@@ -134,13 +154,13 @@ img{
     transition: 0.4s ease-in-out;
 }
 
-.card-container {
+/* .card-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 10px;
     text-align: center;
-}
+} */
 
 .card-container div {
     position: relative; /* Make the container relative for positioning overlay */
